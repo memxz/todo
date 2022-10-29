@@ -4,7 +4,7 @@ name: Release and deploy todo
 on: 
   push:
     branches:
-      - "release/.*"
+      - "release/[A_Za-z0-9]+"
 
 # Jobs in the workflow
 jobs: 
