@@ -15,9 +15,19 @@ jobs:
 
     # list of steps to perform task
     steps: 
-    - name: Echi branch name
+    - name: Echo branch name
       run: echo "current branch - ${{github.ref_name}}"
     - name: checkout the branch
       uses: actions/checkout@v3
       with:
         ref: ${{github.ref_name}}
+    - name: Deploy vercel
+      uses: amondnet/vercel-action@v25.1.0
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        vercel-token: ${{ secrets.VERCEL_TOKEN }} 
+        vercel-org-id: ${{ secrets.ORG_ID}}  #Required
+        vercel-project-id: ${{ secrets.PROJ_ID}} #Required 
+        vercel-args: '--prod' #Optional
+        
+
